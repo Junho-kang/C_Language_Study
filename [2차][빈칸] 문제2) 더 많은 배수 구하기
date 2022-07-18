@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int func_a(int arr[], int arr_len){         // for 문을 0부터 배열의 길이-1만큼 반복하여 arr의 각 방의 값이 5의 배수일 때, count++을 진행
+    int count = 0;
+    for(int i = 0; i < arr_len; ++i)
+        if (arr[i] % 5 == 0)
+            count += 1;
+    return count;
+}
+
+char* func_b(int three, int five){          // 
+    if (three > five)
+        return "three";
+    else if (three < five)
+        return "five";
+    else
+        return "same";
+}
+
+int func_c(int arr[], int arr_len){         // for 문을 0부터 배열의 길이-1만큼 반복하여 arr의 각 방의 값이 3의 배수일 때, count++을 진행
+    int count = 0;
+    for(int i = 0; i < arr_len; ++i)
+        if (arr[i] % 3 == 0)
+            count += 1;
+    return count;
+}
+
+char* solution(int arr[], int arr_len) {
+    int count_three = func_c(arr,arr_len);          // 3의 배수의 개수를 구하기 위한 func_C를 호출				
+    int count_five = func_a(arr,arr_len);				    // 5의 배수의 개수를 구하기 위한 func_a를 호출
+    char* answer = func_b(count_three,count_five);	// 
+    return answer;
+}
+
+int main() {
+    int arr[10] = {2, 3, 6, 9, 12, 15, 10, 20, 22, 25};
+    int arr_len = 10;
+    char* ret = solution(arr, arr_len);           // solution 함수 호출
+
+    printf("solution 함수의 반환 값은 %s 입니다.\n", ret);
+}
