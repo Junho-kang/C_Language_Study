@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int* solution(char* schedule[], int schedule_len) {
+    int x_count = 0;                                      // x_count, 상담을 받지 못한 학생들의 수를 담을 변수
+    for (int i = 0; i < 10; i++)
+        if (schedule[i][0] == 'X')                        // schedule[i][0]이 X일 경우 x_count를 1 증가한다                
+            x_count++;
+
+    int* answer = (int*)malloc(sizeof(int) * x_count);    // *answer, 상담을 받지 모산 학생들의 번호를 오름차순으로 정렬
+    for (int i = 0, j = 0; i < 10; i++) {     
+        if (schedule[i][0] == 'X') {                      // schedule[i][0] == 'X'이면, answer[j]에 i+1을 담고, j를 증가시킨다.
+            answer[j++] = i + 1;                          // answer에 번호를 담으면서도 j도 함께 증가시켜야 하므로, answer[j++]을 해야 값을 채우면서 j를 증가시킨다.
+            //answer[j] = i + 1;                          // i는 0부터 시작하지만 학생의 번호는 1부터 시작하기에 +1를 해줘야 한다.
+            //j++;
+        }
+    }
+    return answer;
+}
+int main() {
+    char* schedule[] = {"O", "X", "X", "O", "O", "O", "X", "O", "X", "X"};
+    int* ret = solution(schedule, 10);
+
+    printf("solution 함수의 반환 값은 ");
+    for(int i=0; i<5; i++)
+        printf("%d, ", ret[i]);
+    printf("입니다.");
+
+}
