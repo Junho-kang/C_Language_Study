@@ -6,7 +6,7 @@ int solution(int number) {
 	for (int i = 1; i <= number; i++) {
 		int current = i;
 		while (current != 0) { 		//빈칸
-			if ((current / 3) == 0)
+			if ((current%10)==3 || (current%10)==6 || (current%10)==9)		// ((current / 3) == 0) 오류인 
 				count++;
 			current /= 10;
 		}
