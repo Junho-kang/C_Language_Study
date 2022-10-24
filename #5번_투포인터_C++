@@ -24,7 +24,7 @@ int main()
             partial_sum -= board[start++];
         else if (partial_sum < M)
             partial_sum += board[end++];
-        if (partial_sum == M)
+        if (partial_sum == M)               // if - else if 다음에 if가 나와서 헷갈렸다.
             answer++;
     }
 
